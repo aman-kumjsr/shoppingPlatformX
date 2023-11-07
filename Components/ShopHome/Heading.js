@@ -1,8 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+
 export default function Heading() {
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.heading}>Shopping</Text>
       <View style={styles.lineContainer}>
         <View style={styles.line} />

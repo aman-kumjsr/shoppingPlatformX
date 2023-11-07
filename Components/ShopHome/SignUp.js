@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     marginVertical: 25,
     marginHorizontal: 15,
     alignItems: "center",
+    marginBottom: 150,
     // justifyContent: "center",
   },
   head: {

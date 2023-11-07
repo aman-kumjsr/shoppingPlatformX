@@ -35,8 +35,11 @@ const ImageRow = () => {
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
       <View style={styles.imageRow}>
         {imageItems.map((item, index) => (
-          <View key={index} style={styles.imageContainer}>
-            <TouchableOpacity onPress={() => console.log("Navigation of row")}>
+          <View key={index}>
+            <TouchableOpacity
+              onPress={() => console.log("Navigation of row")}
+              style={styles.imageContainer}
+            >
               <Image source={{ uri: item.url }} style={styles.image} />
               <Text style={styles.imageText}>{item.text}</Text>
             </TouchableOpacity>
@@ -48,6 +51,9 @@ const ImageRow = () => {
 };
 
 const styles = StyleSheet.create({
+  imageContainer: {
+    justifyContent: "center",
+  },
   imageRow: {
     flexDirection: "row",
     paddingTop: 28,

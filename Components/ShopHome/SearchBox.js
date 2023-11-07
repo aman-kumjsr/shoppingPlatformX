@@ -5,13 +5,13 @@ export default function SearchBox() {
     <View style={styles.container}>
       <View style={styles.searchBox}>
         <Image
-          source={require("../icons/Search.jpg")}
+          source={require("../../icons/Search.jpg")}
           style={styles.searchLogo}
         />
 
         <TextInput style={styles.searchInput} placeholder="Search" />
         <Image
-          source={require("../icons/Configure.jpg")}
+          source={require("../../icons/Configure.jpg")}
           style={styles.ConfigureLogo}
         />
       </View>

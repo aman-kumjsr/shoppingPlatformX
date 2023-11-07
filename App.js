@@ -1,11 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
-import ShopComp from "./app/ShopComp";
-import ShoppingHome from "./app/ShoppingHome";
+import React from "react";
+import StackNavigator from "./Navigator/StackNavigator";
 
 export default function App() {
   return (
     <>
-      <ShoppingHome />
+      <StackNavigator />
     </>
   );
 }

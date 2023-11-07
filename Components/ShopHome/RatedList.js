@@ -8,7 +8,7 @@ import {
   ImageBackground,
 } from "react-native";
 
-const ArrivalList = () => {
+const RatedList = ({ navigation }) => {
   // Assuming you have an array of image URLs and corresponding text
   const data = [
     {
@@ -61,9 +61,7 @@ const ArrivalList = () => {
     <View style={styles.container}>
       {data.map((item, index) => (
         <View key={index} style={styles.row}>
-          <TouchableOpacity
-            onPress={() => console.log("Navigation successful")}
-          >
+          <TouchableOpacity onPress={() => navigation.navigate("Productinfo")}>
             <View style={styles.imgContainer}>
               <Image source={{ uri: item.imageUrl }} style={styles.image} />
             </View>
@@ -115,4 +113,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ArrivalList;
+export default RatedList;
