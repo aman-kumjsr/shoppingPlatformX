@@ -6,6 +6,8 @@ import ShopComp from "../Screens/ShopComp";
 import FootHome from "../Screens/FootHome";
 import Productinfo from "../Screens/Productinfo";
 import Submit from "../app/Submit";
+import YourCart from "../Screens/YourCart";
+import ShoppingCart from "../Screens/ShoppingCart";
 
 export default function StackNavigator() {
   const Stack = createNativeStackNavigator();
@@ -22,8 +24,16 @@ export default function StackNavigator() {
           component={ShopComp}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Shopping" component={FootHome} />
-        <Stack.Screen name="Productinfo" component={Productinfo} />
+        <Stack.Screen
+          name="Shopping"
+          component={FootHome}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Productinfo"
+          component={Productinfo}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Submit"
           component={Submit}
@@ -32,6 +42,16 @@ export default function StackNavigator() {
         <Stack.Screen
           name="Home"
           component={ShoppingStart}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="YourCart"
+          component={YourCart}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ShoppingCart"
+          component={ShoppingCart}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

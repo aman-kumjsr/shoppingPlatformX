@@ -16,8 +16,8 @@ import SwiperComp from "../Components/ShopHome/Swiper";
 const ShopComp = ({ navigation }) => {
   return (
     <View>
-      <Heading />
-      <SearchBox />
+      <Heading dataIndex={0} />
+      <SearchBox navigation={navigation} />
       {/* <SaleSection /> */}
       <ScrollView showsVerticalScrollIndicator={false}>
         <SwiperComp />

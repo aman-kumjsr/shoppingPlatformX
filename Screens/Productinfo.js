@@ -6,10 +6,12 @@ import {
   FlatList,
   Pressable,
   View,
+  TouchableOpacity,
 } from "react-native";
 import { React, useState, useEffect } from "react";
+import Heading from "../Components/ShopHome/Heading";
 
-const Productinfo = () => {
+const Productinfo = ({ navigation }) => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedTopic, setSelectedTopic] = useState("Topic1");
 
@@ -134,95 +136,102 @@ const Productinfo = () => {
   };
 
   return (
-    <View style={[styles.containerBase, { margin: 16 }]}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.mainImageView}>
-          <Image source={images[selectedImage]} style={styles.mainImage} />
-        </View>
-        <FlatList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={images}
-          renderItem={renderItem}
-          keyExtractor={(item, index) => index.toString()}
-        />
+    <View>
+      <Heading dataIndex={0} />
+      <View style={[styles.containerBase, { margin: 16 }]}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.mainImageView}>
+            <Image source={images[selectedImage]} style={styles.mainImage} />
+          </View>
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={images}
+            renderItem={renderItem}
+            keyExtractor={(item, index) => index.toString()}
+          />
 
-        <Text style={styles.productName}>Galliano Donna Women's Olsen Gem</Text>
-        <View style={styles.productPrice}>
-          <Text style={styles.originalPrice}>$399</Text>
-          <View style={styles.line} />
-          <Text style={styles.discountPrice}>$299</Text>
-        </View>
-        <Text style={styles.productDescription}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos rem nobis
-          quasi numquam quis tempore obcaecati unde, praesentium beatae vel,
-          sequi animi alias voluptatum. Hic natus consequatur nisi, veniam
-          cupiditate assumenda non mollitia nostrum.
-        </Text>
-        <Text style={styles.sizeText}>Size</Text>
-        <View style={styles.sizeChart}>
-          {size.map((item) => (
-            <Pressable key={item.id} style={styles.productSize}>
-              <Text style={styles.size}>{item.size}</Text>
-            </Pressable>
-          ))}
-          <Pressable>
-            <Text style={styles.chart}>Size Chart</Text>
-          </Pressable>
-        </View>
-        <Text style={styles.colorTxt}>Color</Text>
-        <View style={styles.colorContainer}>
-          {color.map((image, index) => (
-            <Pressable key={image.id}>
-              <View style={styles.colorView}>
-                <Image source={image.source} style={styles.colorImg} />
-              </View>
-            </Pressable>
-          ))}
-        </View>
-        <View style={styles.cartBuy}>
-          <Text style={styles.cartTxt}>Add to Cart</Text>
-          <Text style={styles.buyTxt}>Buy Now</Text>
-        </View>
-
-        <View>
-          {/* <Text>Selected Topic: {selectedTopic}</Text> */}
-          <View style={styles.detailsView}>
-            <Pressable onPress={() => switTopic("Topic1")}>
-              <Text style={styles.topic}>Description</Text>
-            </Pressable>
-            <Pressable onPress={() => switTopic("Topic2")}>
-              <Text style={styles.topic}>Additonal Information</Text>
-            </Pressable>
-            <Pressable onPress={() => switTopic("Topic3")}>
-              <Text style={styles.topic}>Review(20)</Text>
+          <Text style={styles.productName}>
+            Galliano Donna Women's Olsen Gem
+          </Text>
+          <View style={styles.productPrice}>
+            <Text style={styles.originalPrice}>$399</Text>
+            <View style={styles.line} />
+            <Text style={styles.discountPrice}>$299</Text>
+          </View>
+          <Text style={styles.productDescription}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos rem
+            nobis quasi numquam quis tempore obcaecati unde, praesentium beatae
+            vel, sequi animi alias voluptatum. Hic natus consequatur nisi,
+            veniam cupiditate assumenda non mollitia nostrum.
+          </Text>
+          <Text style={styles.sizeText}>Size</Text>
+          <View style={styles.sizeChart}>
+            {size.map((item) => (
+              <Pressable key={item.id} style={styles.productSize}>
+                <Text style={styles.size}>{item.size}</Text>
+              </Pressable>
+            ))}
+            <Pressable>
+              <Text style={styles.chart}>Size Chart</Text>
             </Pressable>
           </View>
-          <View styles={styles.contentView}>
-            <Text style={styles.content}>{topicContent[selectedTopic]}</Text>
+          <Text style={styles.colorTxt}>Color</Text>
+          <View style={styles.colorContainer}>
+            {color.map((image, index) => (
+              <Pressable key={image.id}>
+                <View style={styles.colorView}>
+                  <Image source={image.source} style={styles.colorImg} />
+                </View>
+              </Pressable>
+            ))}
           </View>
-        </View>
-        <View styles={styles.relatedView}>
-          <Text style={styles.relatedTxt}>Related Products</Text>
-        </View>
-        <FlatList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={relatedProdutImg}
-          renderItem={renderRelatedItem}
-          keyExtractor={(item, index) => index.toString()}
-        />
-        <View styles={styles.relatedView}>
-          <Text style={styles.relatedTxt}>You Might Also Like</Text>
-        </View>
-        <FlatList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={relatedProdutImg}
-          renderItem={renderRelatedItem}
-          keyExtractor={(item, index) => index.toString()}
-        />
-      </ScrollView>
+          <View style={styles.cartBuy}>
+            <TouchableOpacity onPress={() => navigation.navigate("YourCart")}>
+              <Text style={styles.cartTxt}>Add to Cart</Text>
+            </TouchableOpacity>
+            <Text style={styles.buyTxt}>Buy Now</Text>
+          </View>
+
+          <View>
+            {/* <Text>Selected Topic: {selectedTopic}</Text> */}
+            <View style={styles.detailsView}>
+              <Pressable onPress={() => switTopic("Topic1")}>
+                <Text style={styles.topic}>Description</Text>
+              </Pressable>
+              <Pressable onPress={() => switTopic("Topic2")}>
+                <Text style={styles.topic}>Additonal Information</Text>
+              </Pressable>
+              <Pressable onPress={() => switTopic("Topic3")}>
+                <Text style={styles.topic}>Review(20)</Text>
+              </Pressable>
+            </View>
+            <View styles={styles.contentView}>
+              <Text style={styles.content}>{topicContent[selectedTopic]}</Text>
+            </View>
+          </View>
+          <View styles={styles.relatedView}>
+            <Text style={styles.relatedTxt}>Related Products</Text>
+          </View>
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={relatedProdutImg}
+            renderItem={renderRelatedItem}
+            keyExtractor={(item, index) => index.toString()}
+          />
+          <View styles={styles.relatedView}>
+            <Text style={styles.relatedTxt}>You Might Also Like</Text>
+          </View>
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={relatedProdutImg}
+            renderItem={renderRelatedItem}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </ScrollView>
+      </View>
     </View>
   );
 };
@@ -231,7 +240,7 @@ export default Productinfo;
 
 const styles = StyleSheet.create({
   containerBase: {
-    flex: 1,
+    // flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
